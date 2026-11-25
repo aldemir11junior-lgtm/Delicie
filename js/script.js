@@ -73,6 +73,13 @@
     const sec = id !== '#inicio' && $(id);   // a primeira tela é sticky: tratada pela rolagem abaixo
     if (sec) spy.observe(sec);
   });
+  // "Para festas e eventos" faz parte do cardápio: destaca "Cardápio" no menu
+  const caixas = $('#caixas');
+  if (caixas) {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) ativar('cardapio'); });
+    }, { rootMargin: '-45% 0px -50% 0px' }).observe(caixas);
+  }
   window.addEventListener('scroll', () => {
     if (window.scrollY <= window.innerHeight * 0.4) ativar('inicio');
   }, { passive: true });
