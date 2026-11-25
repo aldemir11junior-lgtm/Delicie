@@ -744,3 +744,21 @@ html,body{overflow-x:clip;max-width:100%}
   .hero::before{background:linear-gradient(90deg,#ffe1ea 0%,#ffe1ea 40%,rgba(255,225,234,.75) 55%,rgba(255,225,234,0) 75%)}
 }
 .menu{background:rgba(255,255,255,.75)}
+
+/* ============================================================
+   CELULAR: primeira tela empilhada (foto em cima, texto embaixo)
+   ============================================================ */
+@media (max-width:900px){
+  .hero{min-height:100vh;min-height:100svh;align-items:flex-end;text-align:center;padding:0 0 84px}
+  .hero-bg{top:0;right:0;bottom:auto;width:100%;height:auto;aspect-ratio:1170/1438;max-height:64%;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
+  .hero-bg img{object-position:center}
+  .hero::before{background:none}
+  .hero-content{text-align:center;padding-top:0}
+  .hero-content>*{margin-inline:auto;max-width:520px}
+  .hero-eyebrow{margin-bottom:10px}
+  .hero h1{font-size:clamp(2.4rem,10vw,3.2rem);margin-bottom:14px}
+  .hero-sub{max-width:520px;margin:0 auto 24px;color:var(--muted)}
+  .hero-actions{justify-content:center}
+  .hero-actions .btn{width:100%;max-width:420px}
+}
