@@ -1,0 +1,15 @@
+{
+  "name": "Deliciê Bolos e Doces",
+  "short_name": "Deliciê",
+  "description": "Bolos, doces e delícias em Três Lagoas - MS.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff5f8",
+  "theme_color": "#f0426f",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "img/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
