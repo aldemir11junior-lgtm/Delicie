@@ -207,9 +207,9 @@
       palco = stage.offsetHeight;
       topo = Math.max(0, (window.innerHeight - palco) / 2);
       stage.style.top = topo + 'px';
-      // velocidade: no celular a faixa anda 2x mais rápido que a rolagem,
+      // velocidade: no celular a faixa anda 2,6x mais rápido que a rolagem,
       // para o efeito não exigir muita rolagem (no computador, 1:1)
-      const vel = window.innerWidth < 760 ? 2 : 1;
+      const vel = window.innerWidth < 760 ? 2.6 : 1;
       hgal.style.height = (curso / vel + palco) + 'px';
       mover();
     };
@@ -227,6 +227,7 @@
     }, { passive: true });
     window.addEventListener('resize', medir);
     window.addEventListener('load', medir);
+    if (document.fonts) document.fonts.ready.then(medir);
     medir();
   }
 
