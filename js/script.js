@@ -53,18 +53,29 @@
   burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
   $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
 
+  /* ---------- "Início" e logo: voltar ao topo ----------
+     A primeira tela é sticky (fica presa no topo para a folha subir por cima),
+     então o navegador acha que ela já está visível e não rola. Rolamos manualmente. */
+  $$('a[href="#inicio"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', location.pathname + location.search);
+  }));
+
   /* ---------- Menu: destaca a seção visível ---------- */
   const navLinks = $$('.menu a[href^="#"]');
+  const ativar = id => navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
   const spy = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-    });
+    entries.forEach(e => { if (e.isIntersecting && window.scrollY > window.innerHeight * 0.4) ativar(e.target.id); });
   }, { rootMargin: '-45% 0px -50% 0px' });
   navLinks.forEach(a => {
-    const sec = $(a.getAttribute('href'));
+    const id = a.getAttribute('href');
+    const sec = id !== '#inicio' && $(id);   // a primeira tela é sticky: tratada pela rolagem abaixo
     if (sec) spy.observe(sec);
   });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY <= window.innerHeight * 0.4) ativar('inicio');
+  }, { passive: true });
 
   /* ---------- Primeira tela: pontinhos de luz subindo ---------- */
   const sparkles = $('.sparkles');
