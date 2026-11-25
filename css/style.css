@@ -734,3 +734,13 @@ html,body{overflow-x:clip;max-width:100%}
   .hgal-track .g-item{height:58svh;max-height:none}
   .hgal-track .g-item:nth-child(4n+3){height:50svh}
 }
+
+/* ============================================================
+   PRIMEIRA TELA: fundo mais rosa (computador e celular)
+   ============================================================ */
+.hero{background:linear-gradient(120deg,#ffe8ef 0%,#ffdbe6 60%,#ffd0de 100%)}
+.hero::before{background:linear-gradient(90deg,#ffe1ea 0%,#ffe1ea 32%,rgba(255,225,234,0) 50%)}
+@media (max-width:900px){
+  .hero::before{background:linear-gradient(90deg,#ffe1ea 0%,#ffe1ea 40%,rgba(255,225,234,.75) 55%,rgba(255,225,234,0) 75%)}
+}
+.menu{background:rgba(255,255,255,.75)}
