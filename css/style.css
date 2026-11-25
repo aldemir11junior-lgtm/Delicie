@@ -785,3 +785,18 @@ html,body{overflow-x:clip;max-width:100%}
 @media (min-width:621px) and (max-width:900px){
   .hero-content{padding-top:calc(100vw * 0.9 - 90px)}
 }
+
+/* CELULAR: bolo centralizado na foto da primeira tela */
+@media (max-width:900px){
+  .hero-bg img{width:104%;max-width:none;margin-left:5%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 9%);mask-image:linear-gradient(90deg,transparent 0%,#000 9%)}
+}
+
+/* CELULAR: fotos preenchem a altura da tela (sem faixa branca depois da última)
+   e a próxima seção chega logo abaixo */
+@media (max-width:620px){
+  .hgal-stage{height:100svh;padding:92px 0 12px;gap:16px;justify-content:flex-start}
+  .hgal-track{align-items:center}
+  .hgal-track .g-item{height:calc(100svh - 92px - var(--hh,190px) - 16px - 12px);max-height:none}
+  .hgal-track .g-item:nth-child(4n+3){height:calc((100svh - 92px - var(--hh,190px) - 16px - 12px) * .92)}
+  .faq{padding-top:36px}
+}

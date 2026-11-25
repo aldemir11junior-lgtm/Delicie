@@ -200,16 +200,18 @@
   if (hgal && track && !reduce) {
     const stage = $('.hgal-stage', hgal);
     let curso = 0, topo = 0, palco = 0;
+    const head = $('.hgal-head', hgal);
     const medir = () => {
+      // altura do título: as fotos usam o resto da tela (sem faixa branca embaixo)
+      stage.style.setProperty('--hh', head.offsetHeight + 'px');
       curso = Math.max(0, track.scrollWidth - window.innerWidth);
-      // palco: no computador ocupa a tela toda; no celular só a altura do conteúdo,
-      // centralizado na tela (evita a área vazia depois que as fotos terminam)
+      // palco ocupa a tela toda; a próxima seção chega logo depois da última foto
       palco = stage.offsetHeight;
       topo = Math.max(0, (window.innerHeight - palco) / 2);
       stage.style.top = topo + 'px';
-      // velocidade: no celular a faixa anda 2,6x mais rápido que a rolagem,
+      // velocidade: no celular a faixa anda 3,4x mais rápido que a rolagem,
       // para o efeito não exigir muita rolagem (no computador, 1:1)
-      const vel = window.innerWidth < 760 ? 2.6 : 1;
+      const vel = window.innerWidth < 760 ? 3.4 : 1;
       hgal.style.height = (curso / vel + palco) + 'px';
       mover();
     };
