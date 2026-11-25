@@ -703,3 +703,18 @@ html,body{overflow-x:clip;max-width:100%}
   .card-body p{flex:none;max-height:2.8em}
   .card-body .btn-outline{margin-top:auto}
 }
+
+/* ============================================================
+   CELULAR: Nossa história (texto antes das fotos, etiquetas 2x2)
+            Galeria (palco só com a altura do conteúdo)
+   ============================================================ */
+@media (max-width:1020px){
+  .about-text{order:-1}
+}
+@media (max-width:620px){
+  .about-tags{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .about-tags span{text-align:center;padding:9px 10px;font-size:.82rem}
+  .hgal-stage{height:auto;padding:20px 0 24px;gap:22px}
+  .hgal-track .g-item{height:44vh;max-height:380px}
+  .hgal-track .g-item:nth-child(4n+3){height:38vh}
+}

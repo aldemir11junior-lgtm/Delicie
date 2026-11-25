@@ -198,15 +198,21 @@
   const bar = $('#hgalBar');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (hgal && track && !reduce) {
-    let curso = 0;
+    const stage = $('.hgal-stage', hgal);
+    let curso = 0, topo = 0, palco = 0;
     const medir = () => {
       curso = Math.max(0, track.scrollWidth - window.innerWidth);
-      hgal.style.height = (curso + window.innerHeight) + 'px';
+      // palco: no computador ocupa a tela toda; no celular só a altura do conteúdo,
+      // centralizado na tela (evita a área vazia depois que as fotos terminam)
+      palco = stage.offsetHeight;
+      topo = Math.max(0, (window.innerHeight - palco) / 2);
+      stage.style.top = topo + 'px';
+      hgal.style.height = (curso + palco) + 'px';
       mover();
     };
     const mover = () => {
-      const total = hgal.offsetHeight - window.innerHeight;
-      const p = total > 0 ? Math.min(Math.max(-hgal.getBoundingClientRect().top / total, 0), 1) : 0;
+      const total = hgal.offsetHeight - palco;
+      const p = total > 0 ? Math.min(Math.max((topo - hgal.getBoundingClientRect().top) / total, 0), 1) : 0;
       track.style.transform = `translate3d(${-p * curso}px,0,0)`;
       if (bar) bar.parentElement.style.setProperty('--gp', p.toFixed(3));
     };
