@@ -718,3 +718,11 @@ html,body{overflow-x:clip;max-width:100%}
   .hgal-track .g-item{height:44vh;max-height:380px}
   .hgal-track .g-item:nth-child(4n+3){height:38vh}
 }
+
+/* CELULAR: mais espaço antes da folha (Especial de Natal) subir */
+@media (max-width:900px){
+  .hero{min-height:82vh;min-height:82svh;padding:110px 0 120px}
+}
+@media (max-width:620px){
+  .sheet{margin-top:-40px}
+}
