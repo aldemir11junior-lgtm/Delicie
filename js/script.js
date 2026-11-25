@@ -207,7 +207,10 @@
       palco = stage.offsetHeight;
       topo = Math.max(0, (window.innerHeight - palco) / 2);
       stage.style.top = topo + 'px';
-      hgal.style.height = (curso + palco) + 'px';
+      // velocidade: no celular a faixa anda 2x mais rápido que a rolagem,
+      // para o efeito não exigir muita rolagem (no computador, 1:1)
+      const vel = window.innerWidth < 760 ? 2 : 1;
+      hgal.style.height = (curso / vel + palco) + 'px';
       mover();
     };
     const mover = () => {
